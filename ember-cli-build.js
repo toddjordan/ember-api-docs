@@ -42,7 +42,7 @@ module.exports = function(defaults) {
 
   if (app.env === 'production') {
     app.options['ember-service-worker'] = {
-      rootUrl: '/api-new/'
+      rootUrl: 'https://ember-api-docs-staging-herokuapp-com.global.ssl.fastly.net/'
     }
   }
 
