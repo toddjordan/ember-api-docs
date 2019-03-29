@@ -1,3 +1,4 @@
+/*eslint-env node*/
 const spawn = require('spawndamnit');
 const ember = `./node_modules/.bin/ember`;
 
@@ -29,7 +30,7 @@ const execEmberProcess = async (cmd) => {
     await execEmberProcess('browserstack:connect');
   }
 
-  await execEmberProcess('exam');
+  let { code } = await execEmberProcess('exam');
 
   if (canConnectToBrowserStack) {
     if (process.env['TRAVIS_JOB_NUMBER']) {
@@ -37,5 +38,7 @@ const execEmberProcess = async (cmd) => {
     }
     await execEmberProcess('browserstack:disconnect');
   }
+
+  return code;
 
 })();
